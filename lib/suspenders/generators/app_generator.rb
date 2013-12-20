@@ -36,7 +36,7 @@ module Suspenders
       invoke :customize_error_pages
       invoke :remove_routes_comment_lines
       invoke :setup_git
-      invoke :setup_database
+      invoke :setup_database unless TEST
       invoke :create_heroku_apps
       invoke :create_github_repo
       invoke :outro
