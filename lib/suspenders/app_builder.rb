@@ -65,15 +65,17 @@ module Suspenders
     end
 
     def configure_smtp
-      copy_file 'smtp.rb', 'config/initializers/smtp.rb'
-
-      prepend_file 'config/environments/production.rb',
-        "require Rails.root.join('config/initializers/smtp')\n"
-
       config = <<-RUBY
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = SMTP_SETTINGS
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    authentication: :plain,
+    domain: 'heroku.com',
+    password: ENV['SENDGRID_PASSWORD'],
+    port: '587',
+    user_name: ENV['SENDGRID_USERNAME']
+  }
       RUBY
 
       inject_into_file 'config/environments/production.rb', config,
