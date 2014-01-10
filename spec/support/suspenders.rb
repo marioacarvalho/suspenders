@@ -25,11 +25,11 @@ def create_tmp_dir
 end
 
 def set_command_line_arguments
-  ARGV.replace [suspended_directory]
+  ARGV.replace [suspended_directory, '-d sqlite3']
 end
 
 def run_suspenders
-  Suspenders::AppGenerator.start
+  Suspenders::AppGenerator.start()
 end
 
 def suspended_directory

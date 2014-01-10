@@ -1,4 +1,3 @@
-TEST = true
 require 'bundler/setup'
 require File.expand_path(File.join('..', 'lib', 'suspenders', 'generators', 'app_generator'), File.dirname(__FILE__))
 require File.expand_path(File.join('..', 'lib', 'suspenders', 'actions'), File.dirname(__FILE__))

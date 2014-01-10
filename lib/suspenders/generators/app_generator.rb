@@ -29,11 +29,8 @@ module Suspenders
     def setup_database
       say 'Setting up database'
 
-      unless TEST
-       if 'postgresql' == options[:database]
-          build :use_postgres_config_template
-       end
-       build :create_database
+      if 'postgresql' == options[:database]
+        build :use_postgres_config_template
       end
     end
 
