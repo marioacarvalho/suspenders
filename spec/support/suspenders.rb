@@ -9,7 +9,7 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do
-    clean_suspended_directory
+    #clean_suspended_directory
   end
 end
 
