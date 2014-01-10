@@ -32,6 +32,8 @@ module Suspenders
       if 'postgresql' == options[:database]
         build :use_postgres_config_template
       end
+
+      build :create_database
     end
 
     def setup_development_environment

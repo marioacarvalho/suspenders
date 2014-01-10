@@ -1,5 +1,3 @@
-PROJECT_DIRECTORY = Pathname.new(File.dirname(__FILE__)).parent.parent
-
 RSpec.configure do |config|
   config.before(:suite) do
     set_command_line_arguments
@@ -9,7 +7,7 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do
-    clean_suspended_directory
+    #clean_suspended_directory
   end
 end
 
@@ -18,14 +16,14 @@ def clean_suspended_directory
 end
 
 def create_tmp_dir
-  begin
-    FileUtils.mkdir "#{root_path}/tmp"
-  rescue Errno::EEXIST => e
-  end
+  #begin
+    FileUtils.mkdir_p "#{root_path}/tmp"
+  #rescue Errno::EEXIST => e
+  #end
 end
 
 def set_command_line_arguments
-  ARGV.replace [suspended_directory, '-d sqlite3']
+  ARGV.replace [suspended_directory]
 end
 
 def run_suspenders
