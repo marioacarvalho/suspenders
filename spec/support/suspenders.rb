@@ -7,7 +7,7 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do
-    #clean_suspended_directory
+    clean_suspended_directory
   end
 end
 
@@ -16,10 +16,7 @@ def clean_suspended_directory
 end
 
 def create_tmp_dir
-  #begin
-    FileUtils.mkdir_p "#{root_path}/tmp"
-  #rescue Errno::EEXIST => e
-  #end
+  FileUtils.mkdir_p "#{root_path}/tmp"
 end
 
 def set_command_line_arguments
