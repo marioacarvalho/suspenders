@@ -15,6 +15,33 @@ module Suspenders
     class_option :skip_test_unit, :type => :boolean, :aliases => '-T', :default => true,
       :desc => 'Skip Test::Unit files'
 
+    def finish_template
+      invoke :suspenders_customization
+      super
+    end
+
+    def suspenders_customization
+      invoke :remove_files_we_dont_need
+      invoke :customize_gemfile
+      invoke :setup_development_environment
+      invoke :setup_test_environment
+      invoke :setup_production_environment
+      invoke :setup_staging_environment
+      invoke :setup_secret_token
+      invoke :create_suspenders_views
+      invoke :setup_coffeescript
+      invoke :configure_app
+      invoke :setup_stylesheets
+      invoke :copy_miscellaneous_files
+      invoke :customize_error_pages
+      invoke :remove_routes_comment_lines
+      invoke :setup_git
+      invoke :setup_database
+      invoke :create_heroku_apps
+      invoke :create_github_repo
+      invoke :outro
+    end
+
     def remove_files_we_dont_need
       build :remove_public_index
       build :remove_rails_logo_image
